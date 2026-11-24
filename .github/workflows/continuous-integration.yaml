@@ -151,6 +151,10 @@ jobs:
       - name: Test
         run: mvn -B -ntp verify -P coverage -pl ${{matrix.modules.values}}
 
+      - name: TEMP print MiniAccumulo logs
+        if: failure()
+        run: for f in /tmp/*/logs/*; do echo "== $f"; tail -n 60 "$f"; done
+
       - name: Add JaCoCo reports to artifact
         uses: actions/upload-artifact@v4
         if: matrix.os == 'ubuntu-latest'

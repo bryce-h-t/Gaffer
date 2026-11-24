@@ -28,6 +28,8 @@ import java.util.Map;
  */
 public final class MiniAccumuloConfigUtil {
 
+    private static final long ZOOKEEPER_STARTUP_TIME_MS = 60_000L;
+
     private MiniAccumuloConfigUtil() {
         // Private constructor to prevent instantiation.
     }
@@ -35,7 +37,8 @@ public final class MiniAccumuloConfigUtil {
     /**
      * Makes the MiniAccumuloCluster ZooKeeper compatible with ZooKeeper 3.5+. Accumulo 2.0
      * relies on the "ruok" four letter word, which is now disabled by default, and the
-     * ZooKeeper AdminServer would otherwise bind to port 8080.
+     * ZooKeeper AdminServer would otherwise bind to port 8080. The ZooKeeper startup timeout
+     * is also increased from the default 20 seconds to allow for slower CI machines.
      *
      * @param config the config to update
      * @return the updated config
@@ -49,6 +52,7 @@ public final class MiniAccumuloConfigUtil {
             systemProperties.put("zookeeper.4lw.commands.whitelist", "*");
             systemProperties.put("zookeeper.admin.enableServer", "false");
             impl.setSystemProperties(systemProperties);
+            impl.setZooKeeperStartupTime(ZOOKEEPER_STARTUP_TIME_MS);
             return config;
         } catch (final ReflectiveOperationException e) {
             throw new IllegalStateException("Unable to configure MiniAccumuloCluster ZooKeeper", e);
