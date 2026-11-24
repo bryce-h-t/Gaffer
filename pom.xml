@@ -938,6 +938,10 @@
                 <version>${surefire.plugin.version}</version>
                 <configuration>
                     <argLine>@{surefireArgLine} ${jvm.module.args}</argLine>
+                    <environmentVariables>
+                        <!-- Accumulo 2.0 MiniAccumuloCluster launches processes with removed JVM flags (e.g. -XX:+UseConcMarkSweepGC) -->
+                        <JDK_JAVA_OPTIONS>-XX:+IgnoreUnrecognizedVMOptions</JDK_JAVA_OPTIONS>
+                    </environmentVariables>
                     <skipTests>${skip.surefire.tests}</skipTests>
                     <excludes>
                         <exclude>${exclude.tests}</exclude>
@@ -965,6 +969,10 @@
                 <configuration>
                     <skipITs>${skip.failsafe.tests}</skipITs>
                     <argLine>@{failsafeArgLine} ${jvm.module.args}</argLine>
+                    <environmentVariables>
+                        <!-- Accumulo 2.0 MiniAccumuloCluster launches processes with removed JVM flags (e.g. -XX:+UseConcMarkSweepGC) -->
+                        <JDK_JAVA_OPTIONS>-XX:+IgnoreUnrecognizedVMOptions</JDK_JAVA_OPTIONS>
+                    </environmentVariables>
                     <excludes>
                         <exclude>**/*$*</exclude>
                         <exclude>**/performance/**</exclude>
