@@ -111,6 +111,7 @@
                         <configuration>
                             <shadedArtifactAttached>true
                             </shadedArtifactAttached>
+                            <createDependencyReducedPom>false</createDependencyReducedPom>
                             <shadedClassifierName>full${append.shaded.classifier}
                             </shadedClassifierName>
                             <artifactSet>

@@ -25,6 +25,7 @@ import org.apache.commons.io.FileUtils;
 
 import uk.gov.gchq.gaffer.accumulostore.AccumuloProperties;
 import uk.gov.gchq.gaffer.accumulostore.AccumuloStore;
+import uk.gov.gchq.gaffer.accumulostore.MiniAccumuloConfigUtil;
 import uk.gov.gchq.gaffer.commonutil.CommonTestConstants;
 
 import java.io.File;
@@ -65,6 +66,7 @@ public final class MiniAccumuloClusterProvider {
             FileUtils.cleanDirectory(tempFolder);
         }
         final MiniAccumuloConfig miniAccumuloConfig = new MiniAccumuloConfig(tempFolder, PASSWORD);
+        MiniAccumuloConfigUtil.configureZooKeeper(miniAccumuloConfig);
         cluster = new MiniAccumuloCluster(miniAccumuloConfig);
         Runtime.getRuntime().addShutdownHook(new Thread() {
             @Override

@@ -52,7 +52,7 @@ Our Javadoc can be found [here](http://gchq.github.io/Gaffer/). Gaffer's documen
 
 ### Local Requirements
 
-For building Gaffer locally you need Java 8 or 11 and Maven installed locally in a *nix environment. MS Windows will work for most purposes, but is not recommended because tests utilising Hadoop fail due to limited Hadoop support on Windows.
+For building Gaffer locally you need Java 17 and Maven installed locally in a *nix environment. MS Windows will work for most purposes, but is not recommended because tests utilising Hadoop fail due to limited Hadoop support on Windows.
 Gaffer will compile with newer versions of Java, but some tests will fail because of a lack of support for newer Java in certain external dependencies.
 
 To build Gaffer run `mvn clean install -Pquick` in the top-level directory. This will build all of Gaffer's core libraries and some examples of how to load and query data.

@@ -24,7 +24,7 @@ This should give a good foundation for users to learn how to configure, interact
 ## Deployment
 This example does not start or configure a real accumulo cluster. Without you having access to an Accumulo cluster you will not be able to use a Gaffer Accumulo Store.
 
-Assuming you have Java 8, Maven and Git installed, you can build and run the latest version of Gaffer FederatedStore locally by doing the following:
+Assuming you have Java 17, Maven and Git installed, you can build and run the latest version of Gaffer FederatedStore locally by doing the following:
 ```bash
 # Clone the Gaffer repository, to reduce the amount you need to download this will only clone the master branch with a depth of 1 so there won't be any history.
 git clone --depth 1 https://github.com/gchq/Gaffer.git #--branch master

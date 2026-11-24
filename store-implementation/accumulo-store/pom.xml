@@ -202,6 +202,7 @@
                         <configuration>
                             <shadedArtifactAttached>true
                             </shadedArtifactAttached>
+                            <createDependencyReducedPom>false</createDependencyReducedPom>
                             <shadedClassifierName>iterators${append.shaded.classifier}
                             </shadedClassifierName>
                             <artifactSet>
@@ -243,6 +244,7 @@
                         <configuration>
                             <shadedArtifactAttached>true
                             </shadedArtifactAttached>
+                            <createDependencyReducedPom>false</createDependencyReducedPom>
                             <shadedClassifierName>utility${append.shaded.classifier}
                             </shadedClassifierName>
                         </configuration>
