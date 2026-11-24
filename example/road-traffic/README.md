@@ -19,7 +19,7 @@ Road Traffic Example
 =============
 
 ## Deployment
-Assuming you have Java 8, Maven and Git installed, you can build and run the latest version of the road traffic demo by doing the following:
+Assuming you have Java 17, Maven and Git installed, you can build and run the latest version of the road traffic demo by doing the following:
 
 ```bash
 # Clone the Gaffer repository, to reduce the amount you need to download this will only clone the master branch with a depth of 1 so there won't be any history.

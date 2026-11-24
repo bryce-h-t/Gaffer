@@ -1,5 +1,5 @@
 /*
- * Copyright 2020-2023 Crown Copyright
+ * Copyright 2020-2026 Crown Copyright
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,8 +23,10 @@ import org.apache.accumulo.core.client.Connector;
 import org.apache.accumulo.core.client.security.tokens.PasswordToken;
 import org.apache.accumulo.core.security.Authorizations;
 import org.apache.accumulo.core.security.SystemPermission;
+import org.apache.accumulo.minicluster.MemoryUnit;
 import org.apache.accumulo.minicluster.MiniAccumuloCluster;
 import org.apache.accumulo.minicluster.MiniAccumuloConfig;
+import org.apache.accumulo.minicluster.ServerType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -60,6 +62,7 @@ public class MiniAccumuloStore extends AccumuloStore {
 
     private static final String ROOT_PASSWORD_DEFAULT = "password";
     private static final int DEFAULT_ZOOKEEPER_PORT = 2181;
+    private static final int TABLET_SERVER_MEMORY_MB = 512;
 
     private static final String ROOT_USER = "root";
     private static final String VISIBILITIES_PROPERTY = "accumulo.mini.visibilities";
@@ -147,6 +150,8 @@ public class MiniAccumuloStore extends AccumuloStore {
         String rootUserPassword = getProperties().get(ROOT_PASSWORD_PROPERTY, ROOT_PASSWORD_DEFAULT);
 
         MiniAccumuloConfig config = new MiniAccumuloConfig(getAccumuloDirectory(), rootUserPassword);
+        MiniAccumuloConfigUtil.configureZooKeeper(config);
+        config.setMemory(ServerType.TABLET_SERVER, TABLET_SERVER_MEMORY_MB, MemoryUnit.MEGABYTE);
 
         String zookeepers = getProperties().getZookeepers();
         String[] zooKeepersArray = zookeepers != null ? zookeepers.split(":") : null;

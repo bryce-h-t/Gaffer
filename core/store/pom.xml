@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  ~ Copyright 2016-2024 Crown Copyright
+  ~ Copyright 2016-2026 Crown Copyright
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
   ~ you may not use this file except in compliance with the License.
@@ -26,7 +26,6 @@
     <artifactId>store</artifactId>
 
     <properties>
-        <!-- Non-bundled mockserver used except when legacy profile active -->
         <mockserver.artifactId>mockserver-junit-jupiter</mockserver.artifactId>
     </properties>
 
@@ -91,19 +90,4 @@
         </dependency>
     </dependencies>
 
-    <profiles>
-        <profile>
-            <id>legacy</id>
-            <activation>
-                <property>
-                    <name>legacy</name>
-                    <value>true</value>
-                </property>
-            </activation>
-            <properties>
-                <!-- Bundled mockserver required for legacy profile due to Guava version conflicts -->
-                <mockserver.artifactId>mockserver-junit-jupiter-no-dependencies</mockserver.artifactId>
-            </properties>
-        </profile>
-    </profiles>
 </project>

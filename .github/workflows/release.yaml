@@ -23,7 +23,7 @@ jobs:
       uses: actions/setup-java@v4
       with:
         distribution: 'zulu'
-        java-version: '8'
+        java-version: '17'
 
     - name: Checkout master
       uses: actions/checkout@v4
@@ -63,7 +63,7 @@ jobs:
       uses: actions/setup-java@v4
       with:
         distribution: 'zulu'
-        java-version: '11'
+        java-version: '17'
 
     - name: Set version
       run: echo "RELEASE_VERSION=$(echo ${{ needs.deploy-release.outputs.release_version }})" >> $GITHUB_ENV
@@ -93,7 +93,7 @@ jobs:
       uses: actions/setup-java@v4
       with:
         distribution: 'zulu'
-        java-version: '8'
+        java-version: '17'
 
     - name: Checkout release
       uses: actions/checkout@v4
@@ -162,7 +162,7 @@ jobs:
       uses: actions/setup-java@v4
       with:
         distribution: 'zulu'
-        java-version: '8'
+        java-version: '17'
 
     - name: Merge master into develop
       run: |

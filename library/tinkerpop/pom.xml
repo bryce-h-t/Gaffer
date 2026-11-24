@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  ~ Copyright 2016-2024 Crown Copyright
+  ~ Copyright 2016-2026 Crown Copyright
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
   ~ you may not use this file except in compliance with the License.
@@ -28,6 +28,9 @@
     <properties>
         <google-guice.version>4.2.3</google-guice.version>
         <cucumber.version>7.15.0</cucumber.version>
+        <!-- The Cypher translator (opencypher front-end 9.0) is only published for Scala 2.11 -->
+        <scala.minor.version>2.11</scala.minor.version>
+        <scala.version>${scala.minor.version}.12</scala.version>
 
         <!-- Don't run any of the standard tinkerpop tests by default-->
         <test>!GafferPopGraphStructureStandardTest,!GafferPopFeatureTest,!GafferPopGraphProcessStandardTest</test>
